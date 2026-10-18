@@ -46,7 +46,8 @@ def safe_path(path):
 
 def output_parent(path, source=None):
     path = safe_path(path)
-    if source and (path == Path(source) or path.is_relative_to(Path(source))):
+    source = safe_path(source) if source else None
+    if source and (path == source or path.is_relative_to(source)):
         raise ValueError('Choose an output folder outside the source.')
     if any((p / '.git').exists() for p in (path, *path.parents)):
         raise ValueError('Keep personal output outside a Git repository.')

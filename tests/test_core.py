@@ -84,6 +84,8 @@ class ExportTests(unittest.TestCase):
     def test_output_must_be_separate_and_outside_git(self):
         with self.assertRaises(ValueError):
             core.output_parent(self.source / 'output', self.source)
+        with self.assertRaises(ValueError):
+            core.output_parent(self.source / 'output', self.source / '..' / self.source.name)
         repo = self.root / 'repo'
         (repo / '.git').mkdir(parents=True)
         with self.assertRaises(ValueError):
