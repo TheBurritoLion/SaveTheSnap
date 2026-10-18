@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "savethesnap-local"
+version = "0.1.0"
+description = "Local, preservation-first Snapchat export repair"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = []
+
+[project.scripts]
+savethesnap = "savethesnap.__main__:main"
+
+[tool.setuptools.package-data]
+savethesnap = ["web.html"]
+
+[tool.setuptools.packages.find]
+include = ["savethesnap*"]
